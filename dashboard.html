@@ -4,8 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-Ca3bMXrpnomkjlkyH2Z33NtQHWuP4q8S4HerocTLS28dIb6IjJ+VVANeYVeFVskxQ" crossorigin="anonymous"></script>
+    <link rel="icon" href="data:,">
+
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+
+    <link rel="stylesheet" href="./css/tailwind.min.css">
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
+    <script src="./javascript/vendor/sweetalert2.min.js"></script>
 </head>
 <body class="flex min-h-screen items-center justify-center bg-gray-200">
 
@@ -19,43 +25,6 @@
         </button>
     </div>
 
-    <script>
-        const SESSION_KEY = "ss_current_user";
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const raw = sessionStorage.getItem(SESSION_KEY);
-            const welcomeText = document.getElementById("welcome-text");
-
-            if (!raw) {
-                // Belum login -> tendang kembali ke halaman login
-                Swal.fire({
-                    icon: "warning",
-                    title: "Belum login",
-                    text: "Silakan Sign In terlebih dahulu.",
-                    confirmButtonColor: "#6A64F1",
-                }).then(() => {
-                    window.location.href = "index.html";
-                });
-                return;
-            }
-
-            const user = JSON.parse(raw);
-            welcomeText.textContent = `Halo, ${user.firstName} (@${user.nickname}) — ${user.email}`;
-        });
-
-        document.getElementById("logout-btn").addEventListener("click", () => {
-            sessionStorage.removeItem(SESSION_KEY);
-            Swal.fire({
-                icon: "success",
-                title: "Logout berhasil",
-                toast: true,
-                position: "top-end",
-                timer: 1500,
-                showConfirmButton: false,
-            }).then(() => {
-                window.location.href = "index.html";
-            });
-        });
-    </script>
+    <script src="./javascript/dashboard.js"></script>
 </body>
 </html>

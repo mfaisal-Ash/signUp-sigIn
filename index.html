@@ -5,9 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign Up & Sign In</title>
+    <link rel="icon" href="data:,">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-Ca3bMXrpnomkjlkyH2Z33NtQHWuP4q8S4HerocTLS28dIb6IjJ+VVANeYVeFVskxQ" crossorigin="anonymous"></script>
+    <!-- Content-Security-Policy: batasi sumber script/style/koneksi hanya ke file sendiri,
+         supaya XSS lebih sulit dan situs tidak bergantung pada domain luar. -->
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+
+    <!-- Asset di-self-host (bukan CDN pihak ketiga) supaya situs tetap jalan
+         walau CDN eksternal sedang down / diblokir / kena serangan. -->
+    <link rel="stylesheet" href="./css/tailwind.min.css">
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
+    <script src="./javascript/vendor/sweetalert2.min.js"></script>
 </head>
 <body class="bg-gray-200">
 
@@ -27,34 +36,41 @@
             <h2 class="mb-4 text-lg font-bold text-[#07074D]">Registration</h2>
 
             <form id="form-signup" novalidate>
+              <!-- Honeypot anti-bot: field ini disembunyikan dari manusia lewat CSS.
+                   Bot yang asal isi semua field otomatis akan mengisi ini -> submit ditolak. -->
+              <div class="absolute -left-[9999px]" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" />
+              </div>
+
               <div class="mb-5">
                 <label for="first_name" class="mb-2 block text-sm font-medium text-[#07074D]">First Name</label>
-                <input type="text" name="first_name" id="first_name" placeholder="First Name"
+                <input type="text" name="first_name" id="first_name" placeholder="First Name" maxlength="50"
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
               </div>
 
               <div class="mb-5">
                 <label for="last_name" class="mb-2 block text-sm font-medium text-[#07074D]">Last Name</label>
-                <input type="text" name="last_name" id="last_name" placeholder="Last Name"
+                <input type="text" name="last_name" id="last_name" placeholder="Last Name" maxlength="50"
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
               </div>
 
               <div class="mb-5">
                 <label for="nickname" class="mb-2 block text-sm font-medium text-[#07074D]">Nickname</label>
-                <input type="text" name="nickname" id="nickname" placeholder="Masukkan Nickname Anda"
+                <input type="text" name="nickname" id="nickname" placeholder="Masukkan Nickname Anda" maxlength="30"
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
               </div>
 
               <div class="mb-5">
                 <label for="email" class="mb-2 block text-sm font-medium text-[#07074D]">Email</label>
-                <input type="email" name="email" id="email" placeholder="faisal@gmail.com"
+                <input type="email" name="email" id="email" placeholder="faisal@gmail.com" maxlength="100"
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
               </div>
 
               <div class="mb-5">
                 <label for="password" class="mb-2 block text-sm font-medium text-[#07074D]">Password</label>
                 <div class="flex gap-2">
-                  <input type="password" name="password" id="password" placeholder="Masukkan Password Anda"
+                  <input type="password" name="password" id="password" placeholder="Masukkan Password Anda" maxlength="72"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                   <button type="button" data-target="password"
                     class="toggle-password shrink-0 rounded-md border border-[#e0e0e0] px-3 text-xs font-medium text-[#6A64F1]">Tampilkan</button>
@@ -65,7 +81,7 @@
               <div class="mb-5">
                 <label for="confirm_password" class="mb-2 block text-sm font-medium text-[#07074D]">Confirm Password</label>
                 <div class="flex gap-2">
-                  <input type="password" name="confirm_password" id="confirm_password" placeholder="Ulangi Password Anda"
+                  <input type="password" name="confirm_password" id="confirm_password" placeholder="Ulangi Password Anda" maxlength="72"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                   <button type="button" data-target="confirm_password"
                     class="toggle-password shrink-0 rounded-md border border-[#e0e0e0] px-3 text-xs font-medium text-[#6A64F1]">Tampilkan</button>
@@ -84,20 +100,27 @@
             <h2 class="mb-4 text-lg font-bold text-[#07074D]">Login</h2>
 
             <form id="form-signin" novalidate>
+              <!-- Honeypot anti-bot -->
+              <div class="absolute -left-[9999px]" aria-hidden="true">
+                <label for="login_website">Website</label>
+                <input type="text" name="website" id="login_website" tabindex="-1" autocomplete="off" />
+              </div>
+
               <div class="mb-5">
                 <label for="login_nickname" class="mb-2 block text-sm font-medium text-[#07074D]">Nickname</label>
-                <input type="text" name="nickname" id="login_nickname" placeholder="Masukkan Nickname Anda"
+                <input type="text" name="nickname" id="login_nickname" placeholder="Masukkan Nickname Anda" maxlength="30"
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
               </div>
 
               <div class="mb-5">
                 <label for="login_password" class="mb-2 block text-sm font-medium text-[#07074D]">Password</label>
                 <div class="flex gap-2">
-                  <input type="password" name="password" id="login_password" placeholder="Masukkan Password Anda"
+                  <input type="password" name="password" id="login_password" placeholder="Masukkan Password Anda" maxlength="72"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-4 text-base text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                   <button type="button" data-target="login_password"
                     class="toggle-password shrink-0 rounded-md border border-[#e0e0e0] px-3 text-xs font-medium text-[#6A64F1]">Tampilkan</button>
                 </div>
+                <p id="signin-lockout-msg" class="mt-1 hidden text-xs text-red-500"></p>
               </div>
 
               <button type="submit"
