@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="flex min-h-screen items-center justify-center bg-gray-200">
+
+    <div class="w-full max-w-md rounded-lg bg-white p-8 text-center shadow">
+        <h1 class="mb-2 text-xl font-bold text-[#07074D]">Selamat Datang, cuy</h1>
+        <p id="welcome-text" class="mb-6 text-[#6B7280]">Memuat data pengguna...</p>
+
+        <button id="logout-btn"
+            class="w-full rounded-md bg-red-500 py-3 px-6 text-base font-semibold text-white hover:bg-red-600">
+            Logout
+        </button>
+    </div>
+
+    <script>
+        const SESSION_KEY = "ss_current_user";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const raw = sessionStorage.getItem(SESSION_KEY);
+            const welcomeText = document.getElementById("welcome-text");
+
+            if (!raw) {
+                // Belum login -> tendang kembali ke halaman login
+                Swal.fire({
+                    icon: "warning",
+                    title: "Belum login",
+                    text: "Silakan Sign In terlebih dahulu.",
+                    confirmButtonColor: "#6A64F1",
+                }).then(() => {
+                    window.location.href = "index.html";
+                });
+                return;
+            }
+
+            const user = JSON.parse(raw);
+            welcomeText.textContent = `Halo, ${user.firstName} (@${user.nickname}) — ${user.email}`;
+        });
+
+        document.getElementById("logout-btn").addEventListener("click", () => {
+            sessionStorage.removeItem(SESSION_KEY);
+            Swal.fire({
+                icon: "success",
+                title: "Logout berhasil",
+                toast: true,
+                position: "top-end",
+                timer: 1500,
+                showConfirmButton: false,
+            }).then(() => {
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>

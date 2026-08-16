@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0ed3cf">
+    <meta name="msapplication-TileColor" content="#0ed3cf">
+    <meta name="theme-color" content="#0ed3cf">
+
+    <meta property="og:image" content="http://tailwindcomponents.com/storage/3459/conversions/temp65384-ogimage.jpg?v=2023-02-20 07:29:26" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:type" content="image/png" />
+
+    <meta property="og:url" content="https://tailwindcomponents.com/component/working-tabs-with-bottom-border/landing" />
+    <meta property="og:title" content="Working Tabs - With Bottom Border by om" />
+    <meta property="og:description" content="Hello , My first component" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@TwComponents" />
+    <meta name="twitter:title" content="Working Tabs - With Bottom Border by om" />
+    <meta name="twitter:description" content="Hello , My first component" />
+    <meta name="twitter:image" content="http://tailwindcomponents.com/storage/3459/conversions/temp65384-ogimage.jpg?v=2023-02-20 07:29:26" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SignUp - SignIn. </title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+<body class="bg-gray-200">
+    <div class="fixed bottom-0 left-0 right-0 z-40 px-4 py-3 text-center text-white bg-gray-800">
+        GITHUB. 
+        <a class="text-gray-200 underline" href="https://github.com/mfaisal-Ash/">Link</a>
+    </div>
+    <div class="w-1/2 mx-auto mt-4  rounded">
+                        <!-- Tabs -->
+                        <ul id="tabs" class="inline-flex w-full px-1 pt-2 ">
+                          <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#second">Registration</a></li>
+                          <li class="px-4 py-2 font-semibold text-gray-800 rounded-t opacity-50"><a href="#third">Login</a></li>
+                        </ul>
+
+                        <!-- Tab Contents -->
+                        <div id="tab-contents">
+                          <div id="second" class="hidden p-4">
+                            <cente>
+                                <h2 style="font-size: large;">Registration</h2>
+                                </cente>
+                                <form id="form" method="POST">
+                                  <div class="mb-5">
+                                    <label
+                                      for="first_name"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      First Name
+                                    </label>
+                                    <input
+                                      type="text"
+                                      name="first_name"
+                                      id="first_name"
+                                      placeholder="First Name"
+                                      class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    />
+                                  </div>
+                                  <div class="mb-5">
+                                    <label
+                                      for="last_name"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      Last Name
+                                    </label>
+                                    <input
+                                      type="text"
+                                      name="last_name"
+                                      id="last_name"
+                                      placeholder="Last Name"
+                                      class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    />
+                                  </div>
+                                  <div class="mb-5">
+                                    <label
+                                      for="nickname"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      Nickname
+                                    </label>
+                                    <input
+                                      type="text"
+                                      name="nickname"
+                                      id="nickname"
+                                      placeholder="Masukkan Nickname Anda"
+                                      class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    />
+                                  </div>
+                                  <div class="mb-5">
+                                    <label
+                                      for="email"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      Email
+                                    </label>
+                                    <input
+                                      type="email"
+                                      name="email"
+                                      id="email"
+                                      placeholder="faisal@gmail.com"
+                                      class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    ></input>
+                                  </div>
+                                  <div class="mb-5">
+                                    <label
+                                      for="password"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      Password
+                                    </label>
+                                    <input
+                                      type="password"
+                                      name="password"
+                                      id="password"
+                                      placeholder="Masukkan Your Password"
+                                      class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    ></input>
+                                  </div>
+                                  <div>
+                                    <button
+                                      class="hover: rounded-md bg-[blue] py-2 px-6 text-base font-semibold text-white outline-none" type="submit"
+                                    >
+                                      Submit
+                                    </button>
+                                  </div>
+                                </form>
+                          </div>
+                          <div id="third" class="hidden p-4">
+                            <cente>
+                                <h2 style="font-size: large;">Login</h2>
+                                </cente>
+                                <form action="form" method="POST">
+                                  <div class="mb-5">
+                                  <div class="mb-5">
+                                    <label
+                                      for="nickname"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      Nickname
+                                    </label>
+                                    <input
+                                      type="text"
+                                      name="nickname"
+                                      id="nickname"
+                                      placeholder="Masukkan Nickname Anda"
+                                      class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    />
+                                  </div>
+                                  <div class="mb-5">
+                                    <label
+                                      for="password"
+                                      class="mb-3 block text-base font-medium text-[#07074D]"
+                                    >
+                                      Password
+                                    </label>
+                                    <input
+                                      type="password"
+                                      name="password"
+                                      id="password"
+                                      placeholder="Masukkan Your Password"
+                                      class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                                    ></input>
+                                  </div>
+                                  <div>
+                                    <button
+                                      class="hover: rounded-md bg-[Green] py-2 px-6 text-base font-semibold text-white outline-none" 
+                                    >
+                                      Submit
+                                    </button>
+                                  </div>
+                                </form>
+                          </div>
+                        </div>
+                      </div>
+<script src="./javascript/api.js"></script>
+
+<script>
+let tabsContainer = document.querySelector("#tabs");
+
+let tabTogglers = tabsContainer.querySelectorAll("a");
+console.log(tabTogglers);
+
+tabTogglers.forEach(function(toggler) {
+  toggler.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    let tabName = this.getAttribute("href");
+
+    let tabContents = document.querySelector("#tab-contents");
+
+    for (let i = 0; i < tabContents.children.length; i++) {
+
+      tabTogglers[i].parentElement.classList.remove("border-blue-400", "border-b",  "-mb-px", "opacity-100");  tabContents.children[i].classList.remove("hidden");
+      if ("#" + tabContents.children[i].id === tabName) {
+        continue;
+      }
+      tabContents.children[i].classList.add("hidden");
+
+    }
+    e.target.parentElement.classList.add("border-blue-400", "border-b-4", "-mb-px", "opacity-100");
+  });
+});
+
+document.getElementById("default-tab").click();
+
+                </script>
+</body>
+</html>
